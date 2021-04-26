@@ -6,9 +6,11 @@ import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import createReduxStore from "./createReduxStore";
 import { createFirestoreInstance } from "redux-firestore";
 import firebase from "firebase/app";
+import "firebase/firestore";
 
 import AppNavbar from "./components/layout/AppNavbar";
 import Dashboard from "./components/layout/Dashboard";
+import AddClient from "./components/clients/AddClient";
 
 import "./App.css";
 
@@ -21,9 +23,10 @@ const fbConfig = {
   appId: "1:250309046965:web:bc6b42d8115fdc143904fc",
   measurementId: "G-VLWVGT02ZW",
 }; // object containing Firebase config
-const rrfConfig = { userProfile: "users" }; // react-redux-firebase config
+const rrfConfig = { userProfile: "users", useFirestoreForProfile: true }; // react-redux-firebase config
 
 firebase.initializeApp(fbConfig);
+firebase.firestore();
 
 const store = createReduxStore();
 
@@ -44,6 +47,7 @@ const App = () => (
           <div className="container">
             <Switch>
               <Route exact path="/" component={Dashboard} />
+              <Route exact path="/client/add" component={AddClient} />
             </Switch>
           </div>
         </div>
