@@ -58,7 +58,7 @@ class Clients extends Component {
               </h2>
             </div>
             <div className="col-md-6">
-              <h5 className="d-flex justify-content-end text-secondary">
+              <h5 className="text-end text-secondary">
                 Total Owed{" "}
                 <span className="text-primary">
                   ${parseFloat(totalOwed).toFixed(2)}
